@@ -6,7 +6,7 @@ class Task {
         console.log("Clicked");
     }
     render() {
-        return `<input type="checkbox"></input>  <span class="content"></span>`;
+        return '<input type="checkbox"></input>  <span class="content"></span>';
     }
 
 }
