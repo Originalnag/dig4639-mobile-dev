@@ -1,0 +1,29 @@
+.firstSection {
+    background-color: #EBEBEB; 
+    align-self: center;   
+    border-style: solid; 
+    border-color: black; 
+    border-radius: 25px;
+    font-style: "sans-serif";
+    margin-right: 30px; 
+    margin-left: 30px; 
+    padding:9px;
+    font-family: 'Roboto', sans-serif;
+}
+
+p { 
+    margin-right: 20px; 
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    color: black; 
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+
+}
+
+body {
+    background-color: #87ceeb;  
+}
