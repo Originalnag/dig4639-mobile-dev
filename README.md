@@ -1,6 +1,14 @@
 # Mobile Development
 This repository contains work completed during Spring 2020 in Dr. Murray's DIG4639: Mobile Development class.
 
+## Team Members
+-veruskarivera
+-originalnag
+-devora02
+-secheverria2
+-ChrisJones100
+
+
 This is a sample change on the local repository.
 
 ## Structure
