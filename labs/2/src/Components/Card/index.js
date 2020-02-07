@@ -1,6 +1,16 @@
 import "./index.css"
 
-// class Adder {
-//     props;
-//     constructor(props)
-// }
+class Card {
+    constructor(props) {
+        this.props = props;
+        this.element = document.createElement("div");
+        this.element.innerHTML = this.props.content;
+        this.element.className = "Card";
+    }
+    
+    render(){ 
+        return this.element; 
+    }
+}
+export default Card;
+// Any other steps besides the bonus which i'll attempt later?
