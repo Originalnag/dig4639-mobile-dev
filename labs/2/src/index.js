@@ -1,5 +1,5 @@
 import Card from "./Components/Card/index.js"
-// That fixed the issue, wow that simple.
+
 function runOnLoad(){
     // Create a container for us    
     let element = document.createElement("div");    

@@ -13,4 +13,3 @@ class Card {
     }
 }
 export default Card;
-// Any other steps besides the bonus which i'll attempt later?
