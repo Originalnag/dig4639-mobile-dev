@@ -1,4 +1,6 @@
-let Card; 
+
+import "./Components/Card/index.css" 
+// let Card; 
 // TODO: Replace this with the correct import statement
 function runOnLoad(){    
     // Create a container for us    
