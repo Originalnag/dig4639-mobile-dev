@@ -12,6 +12,7 @@ function runOnLoad()
     var addTaskButton = document.getElementById("addTask");
     addTaskButton.addEventListener("click", onClick,);
 }
+
 function onClick() {
     console.log("clicked!");
     if (input.value != "") {
