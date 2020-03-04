@@ -11,7 +11,6 @@ class CardList extends React.Component {
     constructor(props) {
   
       super(props);
-  
       this.state = { cards:data.cards.map((v,i) => {
         v.id = i
         return v
