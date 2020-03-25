@@ -1,36 +1,50 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, ListView } from 'react-native';
+import { StyleSheet, Text, View, Button, ListView, TextInput, CheckBox } from 'react-native';
+
+class TodoItem extends React.Componet {
+  state={}
+  render() {
+  return <View style={{ flexDirection:'row'}}>
+    <CheckBox style={{marginTop:12}} value={this.state.checked} onValueChange={() => this.setState({ checked: !this.state.checked})}>
+    </CheckBox>
+    <Text style={{fontSize:30, marginLeft: 10}}>{this.props.content}</Text>
+  </View>
+}
+}
 
 export default class App extends React.Component {
 
   constructor(props) {
     super(props)
-    this.rows =["This is 1"]
-    const ds = new ListView.DataSource({rowHasChanged: (r1,r2) !== r2});
+    this.rows =["This is 1", "This is 2", "This is 3"]
+    const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2});
     this.state = {
     content: "Hello World",
-    dataSource: ds.clonewithRows(["This is 1", "This is 2", "This is 3"]),
-    currentItem: 3
-  
+    dataSource: ds.clonewithRows(this.rows),
+    currentItem: 3,
+    todoText: ""
   }
     // console.log("Hello World")
   }
 
 onPressHandler(evt) {
   console.log("clicked")
-  this.setState({content: "Hello Glorious React Native World!"})
-  this.setState({dataSource: this.state.dataSource.clonewithRows(["This is the new Data"])})
+  this.rows = [ ...this.rows, this.state.todoText]
+  console.log(this.state.todoText)
+  this.setState({dataSource: this.state.dataSource.clonewithRows(
+    this.rows)})
 }
 
   render() {
     return (
     <View style={styles.container}>
-      <Text style={styles.header}>{this.state.content}</Text>
-      <Button style={styles.button} color="#990000" title="Click me" onPress={(evt) => onPressHandler(evt)}>
-      </Button>
+      <View style={{flexDirection:"row"}}>
+        <TextInput onChangeText={todoText => this.setState({todoText})}></TextInput>
+      <Button style={styles.button} color="#990000" title="Click me" onPress={(evt) => onPressHandler(evt)}></Button>
+      </View>
       <ListView
       dataSource={this.state.dataSource}
-      renderRow={(rowData)=> <Text key={rowData}</Text>}
+      renderRow={(rowData)=> <TodoItem content={rowData} />}
       />
     </View>
     );
