@@ -12,8 +12,17 @@ class TodoItem extends React.Componet {
 }
 }
 
-export default class App extends React.Component {
+class TodoItem extends React.Component {
+  state={}
+  render() {
+    return <View style={{ flexDirection:'row' }}>
+      <CheckBox style={{marginTop:12}} value={this.state.checked} onValueChange={() => this.setState({ checked: !this.state.checked })}></CheckBox>
+    <Text style={{fontSize:30, marginLeft: 10}}>{this.props.content}</Text>
+    </View>
+  }
+}
 
+export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.rows =["This is 1", "This is 2", "This is 3"]
