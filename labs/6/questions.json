@@ -1,0 +1,87 @@
+[
+    {
+      "question": "Who is the Protagaonist of God of War (2018)?",
+      "possibleAnswers":
+      [
+        {"text":"Kratos",
+        "correct":true },
+        {"text":"Zeus",
+          "correct":false
+        },
+        {"text":"Poseidon",
+          "correct":false
+        },
+        {"text":"Aries",
+          "correct": false
+        }
+      ]
+    },
+    {
+        "question": "How did Kratos get the blades of Chaos?",
+        "possibleAnswers":
+        [
+          {"text":"He asked Aries for help to slay his foes in exchange for his life",
+          "correct":true },
+          {"text":"He found them in the temple hidden in the desert",
+            "correct":false
+          },
+          {"text":"He found it in Atlantis",
+            "correct":false
+          },
+          {"text":"He begged Zeus to give them to him",
+            "correct": false
+          }
+        ]
+      },
+      {
+        "question": "Why did Kratos seek vengenance?",
+        "possibleAnswers":
+        [
+          {"text":"Because he was feeling bored",
+          "correct":false },
+          {"text":"He was tired of living like a mortal and wanted a change",
+            "correct":false
+          },
+          {"text":"He wanted to get revenge on Zeus for taking away his powers and god status",
+            "correct":true
+          },
+          {"text":"Zeus threw him off a cliff as a kid",
+            "correct": false
+          }
+        ]
+      }, 
+      {
+        "question": "What is the name of Kratos gave to his son",
+        "possibleAnswers":
+        [
+          {"text":"Atrius",
+          "correct":false },
+          {"text":"Atreus",
+            "correct":true
+          },
+          {"text":"Loki",
+            "correct":false
+          },
+          {"text":"Jumbei",
+            "correct": false
+          }
+        ]
+      },
+      {
+        "question": "How did Kratos slay his family?",
+        "possibleAnswers":
+        [
+          {"text":"He was told that it would grant him immortality",
+          "correct":false },
+          {"text":"Zeus tasked him with the job of killing his family to attain great power beyond his imagination",
+            "correct":false
+          },
+          {"text":"He got annoyed one day and decided he did not need a family anymore",
+            "correct":false
+          },
+          {"text":"He was tasked with attacking a village, and did not realize his family was sent there temporarily, only to be killed by Kratos without him seeing them",
+            "correct": true
+          }
+        ]
+      }
+  ]
