@@ -6,7 +6,7 @@ import { StyleSheet, Text, Button, View } from 'react-native';
 const TIME_LIMIT = 5
 const TITLE_STATE = 0
 const QUESTION_STATE = 1
-// const FINAL_STATE = 2
+
 
 class QuizQuestion extends React.Component {
   render() {
@@ -14,7 +14,7 @@ class QuizQuestion extends React.Component {
     <Text style={styles.Text}>{this.props.question}</Text>
     {this.props.answers.map((v, i) =>
     <Button 
-      color="#9441f2" title={v.text} onPress={() => this.props.nextQuestion(v.correct)} key={i}
+      color="pink" title={v.text} onPress={() => this.props.nextQuestion(v.correct)} key={i}
     />)}
     </>
   }
@@ -83,7 +83,7 @@ class TitlePage extends React.Component {
           {((this.state.currentState === TITLE_STATE) ?
             <>
             <Text style={styles.Text}>{this.state.titleText}</Text>
-            <Button title = "start" onPress={()=>this.start()} />
+            <Button color="#4B3FFB" title = "start" onPress={()=>this.start()} />
             </>
             : <QuizQuestion 
                 answers={questions[this.state.currentQuestion].possibleAnswers} 
@@ -94,11 +94,12 @@ class TitlePage extends React.Component {
     }
     }
 
+    
     class App extends React.Component {
       render() {
       return (
         <View style={styles.container}>
-          <Text style={styles.Text}>God of War Quiz</Text>
+          <Text style={styles.Text}>Brian's Personality Quiz</Text>
           <TitlePage></TitlePage>
         </View>
       );
@@ -115,11 +116,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 10,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
   },
   Text: {
     color:"#3795cc",
+    backgroundColor:"black",
   },
   Score: {
     color: "pink",
+    backgroundColor:"black",
   }
 });
