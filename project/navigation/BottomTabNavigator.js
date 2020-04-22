@@ -2,11 +2,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
-import TodoScreen from '../screens/TodoScreen';
-import AddTaskScreen from '../screens/AddTaskScreen';
+import HomeScreen from '../screens/HomeScreen';
+import LinksScreen from '../screens/LinksScreen';
 
 const BottomTab = createBottomTabNavigator();
-const INITIAL_ROUTE_NAME = 'Todo';
+const INITIAL_ROUTE_NAME = 'Home';
 
 export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
@@ -17,19 +17,19 @@ export default function BottomTabNavigator({ navigation, route }) {
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       <BottomTab.Screen
-        name="Todo"
-        component={TodoScreen}
+        name="Home"
+        component={HomeScreen}
         options={{
-          title: 'Todo List',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-list" />,
+          title: 'Get Started',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
         }}
       />
       <BottomTab.Screen
-        name="Add"
-        component={AddTaskScreen}
+        name="Links"
+        component={LinksScreen}
         options={{
-          title: 'Add Task',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-add" />,
+          title: 'Resources',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
         }}
       />
     </BottomTab.Navigator>
@@ -40,9 +40,9 @@ function getHeaderTitle(route) {
   const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
 
   switch (routeName) {
-    case "Todo":
-      return "Todo List:";
-    case "Add":
-      return "Create a new task:";
+    case 'Home':
+      return 'How to get started';
+    case 'Links':
+      return 'Links to learn more';
   }
 }

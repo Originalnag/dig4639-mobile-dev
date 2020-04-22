@@ -8,8 +8,8 @@ export default function(containerRef) {
       Root: {
         path: 'root',
         screens: {
-          Todo: 'Todo',
-          Add: 'add',
+          Home: 'home',
+          Links: 'links',
           Settings: 'settings',
         },
       },
