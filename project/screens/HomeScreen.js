@@ -22,14 +22,17 @@ const HEADERS2 = {
 }
 
 export default class HomeScreen extends React.Component {
-  state = {
+  constructor(props) {
+  super(props);
+  this.state = {
     contacts:[], 
     name:"", 
     number:"", 
-    add:[],
     profile:[]
-  }
+  };
+}
   
+
   
   callApi() {
     window.fetch("http://plato.mrl.ai:8080", HEADERS)
@@ -41,72 +44,60 @@ export default class HomeScreen extends React.Component {
      console.log("Effect has run")
       window.fetch("http://plato.mrl.ai:8080/contacts", HEADERS)
          .then(response => response.json())
-          .then(data => this.setState({contacts:data.contacts}))
-          this.Profile()
+          .then(data => this.setState({contacts:data.contacts}));
      }
    
 
-   Adding(position, state) {
-    console.log("Effect has run again")
-
+   Adding() {
+    console.log("Adding Contact")
     console.log(this.state.name)
     console.log(this.state.number)
+    let newContacts = this.state.contacts.concat({name: this.state.name, number:this.state.number})
     window.fetch("http://plato.mrl.ai:8080/contacts/add", 
     {
       ...HEADERS2,
-      body: JSON.stringify({name: this.state.name, number: this.state.number, position: this.state.position })
+      body: JSON.stringify({name: this.state.name, number: this.state.number })
     })
       .then(response => response.json())
-      .then(data => {
+      .then(body => {
         console.log(body)
-        if(data.updated != undefined) {
-          const listed = [...this.state.body.contacts]
-          listed[position] = state
-          this.setState({listed: contacts})
-        }
-      })
+          this.setState({contacts: newContacts})
+        })
   }
 
-  delete (position) {
-    window.fetch("http://plato.mrl.ai:8080/contacts/remove", 
-    {
+  delete = (position) => {
+    var newContacts = [this.state.contacts]
+    window.fetch('http://plato.mrl.ai:8080/contacts/remove', {
       ...HEADERS2,
-      body: JSON.stringify({position:position })
+      body: JSON.stringify({ position: position })
     })
-    .then(response => response.json())
-    .then(body => {
-    console.log(body)
-    if (body.removed != undefined) {
-      const newContacts = this.state.contacts.filter((contact,i) =>
-      (i !== position))
-      this.setState({contacts: newContacts })
-    }})}
-       
-      //  delete = (event) => {
-      //   console.log('test');
-      //   var newContacts = [...this.state.contacts]
-      //   newContacts.pop()
-      //   this.setState({contacts: newContacts})
-      //     }
-    
+      .then(response => response.json())
+      .then(body => {
+        console.log(body)
+        if (body.removed != undefined) {
+          newContacts = this.state.contacts.filter((v, i) =>
+            (i != position))
+          this.setState({ contacts: newContacts })
+        }
+      })}
+      
   
       Profile = () => {
-        window.fetch("http://plato.mrl.ai:8080/contacts/profile", 
+        window.fetch("http://plato.mrl.ai:8080/profile", 
         {
           ...HEADERS
         })
-        .then(res => res.json())
+        .then(response => response.json())
         .then((data) => {
           this.setState({profile: data})
+          console.log(data)
         })}
           
-
-
    render() {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <View>
+      
       <TextInput style = {styles.input}
         placeholder = "Username"
         placeholderTextColor = "#9a73ef"
@@ -123,34 +114,41 @@ export default class HomeScreen extends React.Component {
           this.setState({number:text})
         }}
       />
+      <View style ={styles.buttons}>
       <Button
-        color = "#6156FD"
+        color = "#5FBEF9"
         style = {styles.submitButton}
-        title="Add someone"
+        title="Add Contact"
         onPress = {
         () => this.Adding()
-        }>
+        }
+        >
         </Button>
+        {
+           this.state.contacts.map((contact, i) => <>
+           <Card key={i}  
+           title={`name: ${contact.name} number: ${contact.number}`} >
         <Button
-          title="delete" onPress={() => this.delete(i)}
-        />
+        title ="Delete"
+        onPress={() => this.delete(i)}
+      />
+      </Card>
+      </>)
+        }
         <Button
-        color = "#6156FD"
+        color = "#EC75FA"
         style = {styles.submitButton}
-        title="Show User"
+        title="Show Profile"
         onPress = {
         () => this.Profile()
-        }>
-        </Button>
+        }
+        />
       <Button 
         onPress={() => this.callApi()}
         title="Call the API"
-        color="#841584"
+        color="#841184"
         accessibilityLabel="Calls the remote API for contacts"
       />
-   {
-        this.state.contacts.map((contact, i) => <Card key={i} title={`name: ${contact.name} number: ${contact.number}`}/>)
-      }
       </View>
       </ScrollView>
       </View>
@@ -197,21 +195,22 @@ function handleHelpPress() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flex: 3,
+    backgroundColor: 'fff111'
+  },
+  buttons: {
+    marginTop:2,
+    paddingh:5,
+    border:50,
+    
   },
   input: {
     margin: 15,
       height: 40,
       borderColor: '#7a42f4',
-      borderWidth: 0.5
+      borderWidth: 0.5,
+      backgroundColor: "#FFFFFF"
   },
-  submitButton: {
-    backgroundColor: '#7a42f4',
-    padding: 10,
-    margin: 15,
-    height: 40,
- },
   developmentModeText: {
     marginBottom: 20,
     color: 'rgba(0,0,0,0.4)',
