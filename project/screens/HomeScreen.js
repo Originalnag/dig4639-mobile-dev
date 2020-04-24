@@ -41,7 +41,7 @@ export default class HomeScreen extends React.Component {
    }
 
    componentDidMount() {
-     console.log("Effect has run")
+     console.log("Contacts are called")
       window.fetch("http://plato.mrl.ai:8080/contacts", HEADERS)
          .then(response => response.json())
           .then(data => this.setState({contacts:data.contacts}));
@@ -50,8 +50,6 @@ export default class HomeScreen extends React.Component {
 
    Adding() {
     console.log("Adding Contact")
-    console.log(this.state.name)
-    console.log(this.state.number)
     let newContacts = this.state.contacts.concat({name: this.state.name, number:this.state.number})
     window.fetch("http://plato.mrl.ai:8080/contacts/add", 
     {
@@ -76,7 +74,7 @@ export default class HomeScreen extends React.Component {
         console.log(body)
         if (body.removed != undefined) {
           newContacts = this.state.contacts.filter((v, i) =>
-            (i != position))
+            (i !== position))
           this.setState({ contacts: newContacts })
         }
       })}
@@ -97,7 +95,11 @@ export default class HomeScreen extends React.Component {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-      
+        <View>
+      {
+        this.Profile
+      }
+      </View>
       <TextInput style = {styles.input}
         placeholder = "Username"
         placeholderTextColor = "#9a73ef"
@@ -122,8 +124,7 @@ export default class HomeScreen extends React.Component {
         onPress = {
         () => this.Adding()
         }
-        >
-        </Button>
+        />
         {
            this.state.contacts.map((contact, i) => <>
            <Card key={i}  
@@ -149,6 +150,7 @@ export default class HomeScreen extends React.Component {
         color="#841184"
         accessibilityLabel="Calls the remote API for contacts"
       />
+      
       </View>
       </ScrollView>
       </View>
@@ -196,7 +198,8 @@ function handleHelpPress() {
 const styles = StyleSheet.create({
   container: {
     flex: 3,
-    backgroundColor: 'fff111'
+    backgroundColor: 'fff111',
+    border: 40
   },
   buttons: {
     marginTop:2,
