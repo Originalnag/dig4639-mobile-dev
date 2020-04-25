@@ -113,6 +113,12 @@ export default class HomeScreen extends React.Component {
         }}
       />
       <View style ={styles.buttons}>
+      <Button 
+        onPress={() => this.callApi()}
+        title="Call the API"
+        color="#841184"
+        accessibilityLabel="Calls the remote API for contacts"
+      />
       <Button
         color = "#5FBEF9"
         style = {styles.submitButton}
@@ -140,12 +146,7 @@ export default class HomeScreen extends React.Component {
         () => this.Profile()
         }
         />
-      <Button 
-        onPress={() => this.callApi()}
-        title="Call the API"
-        color="#841184"
-        accessibilityLabel="Calls the remote API for contacts"
-      />
+      
       <Text style={styles.container}>Made by Brian Flores</Text>
       </View>
       </ScrollView>
