@@ -95,11 +95,7 @@ export default class HomeScreen extends React.Component {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <View>
-      {
-        this.Profile
-      }
-      </View>
+        <Text style = {styles.container}>Welcome to my React Native App</Text>
       <TextInput style = {styles.input}
         placeholder = "Username"
         placeholderTextColor = "#9a73ef"
@@ -150,7 +146,7 @@ export default class HomeScreen extends React.Component {
         color="#841184"
         accessibilityLabel="Calls the remote API for contacts"
       />
-      
+      <Text style={styles.container}>Made by Brian Flores</Text>
       </View>
       </ScrollView>
       </View>
@@ -199,20 +195,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 3,
     backgroundColor: 'fff111',
-    border: 40
+    textAlign: "center",
+    fontFamily:"Timesnewroman",
+    fontSize: 22,
+    padding:10
   },
   buttons: {
     marginTop:2,
-    paddingh:5,
-    border:50,
-    
+    padding:20,
+    alignSelf: "center",
+    width: "50%"
   },
   input: {
     margin: 15,
       height: 40,
       borderColor: '#7a42f4',
       borderWidth: 0.5,
-      backgroundColor: "#FFFFFF"
+      backgroundColor: "#FFFFFF",
+      alignSelf: "center",
+      width: "50%"
   },
   developmentModeText: {
     marginBottom: 20,
